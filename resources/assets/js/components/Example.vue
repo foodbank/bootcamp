@@ -1,21 +1,15 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Example Component</div>
-
-                    <div class="panel-body">
-                        I'm an example component!
-                    </div>
-                </div>
-            </div>
-        </div>
+        <input type="text" v-model="message">
+        <p>message: {{ message }}</p>
     </div>
 </template>
 
 <script>
     export default {
+        data() {
+            return { message: 'Hello world' }
+        },
         mounted() {
             console.log('Component mounted.')
         }
@@ -23,7 +17,7 @@
 </script>
 
 <style lang="scss">
-    .panel-body {
-        color: red;
+    .container {
+        color: darkseagreen;
     }
 </style>
