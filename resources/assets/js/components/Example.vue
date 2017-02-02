@@ -3,24 +3,26 @@
         <ul>
             <li v-for="name in names" v-text="name"></li>
         </ul>
-        <input id="input" type="text">
-        <button id="button">Add new username</button>
+        <input id="input" type="text" v-model="newName">
+        <button id="button" @click="addName">Add new username</button>
     </div>
 </template>
 
 <script>
     export default {
         data() {
-            return { names: ['Joe', 'Mary', ' Jack'] }
+            return {
+                newName: '',
+                names: ['Joe', 'Mary', ' Jack']
+            }
+        },
+        methods: {
+            addName () {
+                this.names.push(this.newName);
+                this.newName = '';
+            }
         },
         mounted() {
-            document.querySelector("#button").addEventListener('click', () => {
-                let name = document.querySelector("#input");
-
-                console.log(this.$data.names.push(name.value));
-
-                name.value = '';
-            });
         }
     }
 </script>
