@@ -1,17 +1,26 @@
 <template>
     <div class="container">
-        <input type="text" v-model="message">
-        <p>message: {{ message }}</p>
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
+        <input id="input" type="text">
+        <button id="button">Add new username</button>
     </div>
 </template>
 
 <script>
     export default {
         data() {
-            return { message: 'Hello world' }
+            return { names: ['Joe', 'Mary', ' Jack'] }
         },
         mounted() {
-            console.log('Component mounted.')
+            document.querySelector("#button").addEventListener('click', () => {
+                let name = document.querySelector("#input");
+
+                console.log(this.$data.names.push(name.value));
+
+                name.value = '';
+            });
         }
     }
 </script>
