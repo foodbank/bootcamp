@@ -1,10 +1,6 @@
 <template>
     <div class="container">
-        <ul>
-            <li v-for="name in names" v-text="name"></li>
-        </ul>
-        <input id="input" type="text" v-model="newName">
-        <button id="button" @click="addName">Add new username</button>
+        <button :class="{ 'is-landing': isLanding }" @click="toggleClass">Hello world</button>
     </div>
 </template>
 
@@ -12,23 +8,22 @@
     export default {
         data() {
             return {
-                newName: '',
-                names: ['Joe', 'Mary', ' Jack']
+                className: 'color-red',
+                isLanding: true
             }
         },
         methods: {
-            addName () {
-                this.names.push(this.newName);
-                this.newName = '';
+            toggleClass () {
+                if (this.isLanding) {
+                    this.isLanding = false;
+                } else {
+                    this.isLanding = true;
+                }
             }
-        },
-        mounted() {
         }
     }
 </script>
 
 <style lang="scss">
-    .container {
-        color: darkseagreen;
-    }
+    .is-landing { color: red; }
 </style>
